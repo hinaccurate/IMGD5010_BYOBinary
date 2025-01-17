@@ -6,6 +6,6 @@ _An assignment to create a speculative binary language that can be executed with
 * Copied README into a new file (progress-notes) to allow for progress notes
 * Updated README to start documentation of fictional language "maCart"
 
-###### Changes: January 16, 2025
+###### created: January 16, 2025
 
 * Created repository, created README
