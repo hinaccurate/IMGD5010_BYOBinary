@@ -155,7 +155,7 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 
 * **0110** - Copy previous macaronus (overwriting any previous copied macaronus)
 
-* **1010** - Paste copied macaronus
+* **1010** - Paste copied macaronus (in the same pattern as the 1000 new macronus command)
 
 &rarr; Go back to [Index](#index)
 
