@@ -149,7 +149,7 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 ### Advanced Art
 
 * **1100** - Changes glue color by advancing the "glue clock" once for each command
-  * In order: White at 100% transparency, then Red, Yellow, Blue, and Purple at 15% transparency)
+  * In order: White at 100% transparency, then Red, Yellow, Blue, Purple, and White at 15% transparency)
 
 * **1111** - Pasta size (1 macaroni fills entire macaronus, can be used instead of 00 but overwrites any use of the 000 arrangement command)
 
