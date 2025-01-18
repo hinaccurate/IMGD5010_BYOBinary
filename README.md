@@ -48,7 +48,9 @@ maCart drawings are composed of one or more macaronus units, allowing for very s
 
 * The macaronus starts empty (blank).
 
-![Kraft-brown diamond with lightly outlined 4-cell grid that looks like four diamonds all connected](/assets/images/1000_macaronus.png)
+![1000_macaronus](https://github.com/user-attachments/assets/eba38cc1-4365-4b5d-acb8-00844298533a)
+
+
 
 * The basic pasta shape is "macaroni", and the first macaroni placed in the macaronus always starts in the top cell, rotated to make a "C". 
 
