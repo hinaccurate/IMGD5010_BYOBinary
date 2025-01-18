@@ -49,15 +49,11 @@ maCart drawings are composed of one or more macaronus units, allowing for very s
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
 
-* The basic pasta shape is "macaroni".
+* The basic pasta shape is "macaroni", and the first macaroni placed in the macaronus always starts in the top cell, rotated to make a "C". 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
 
-* The first macaroni placed in the macaronus always starts in the upper-left corner. Subsequent macaroni are placed clockwise until the macaronus is filled, but macaroni can continue to be layered over one another until a new macaronus is added to the maCart drawing.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
-
-* Macaroni always start "C" shaped in its cell. Additional commands can be given to manipulate the macaroni until a new macaroni is added to the next cell.
+* Subsequent macaroni are placed clockwise until the macaronus is filled, but macaroni can continue to be layered over one another until the command to add a new macaronus to the maCart drawing is given.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
 
@@ -65,6 +61,7 @@ maCart drawings are composed of one or more macaronus units, allowing for very s
   
   * The macaroni is yellow.
   * The lighting on the macaroni is coming from directly above, with no shadows (i.e., 100% transparent).
+  * ...But if the shadow _was_ visible, it would be on the convex side of the macaroni.
   * The background color of the macaronus starts as "kraft" (cardboard).
   * The implied "glue" that creates a macaronus perfectly aligned with the pasta (i.e., 100% transparent).
 
@@ -138,11 +135,11 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 * **0011** - Changes the color of the macaronus's construction paper by advancing the "color clock" once for each command
   * In order: Kraft, Red, Yellow, Blue, Black, and White
 
-* **1101** - Increases the size of the macaroni's shadow by advancing the "light clock" once for each command 
-  * In order: 0% larger than macaroni, 25% larger, 50% larger, and 75% larger
-
 * **1011** - Increases the opacity of the macaroni's shadow by advancing the "shadow clock" once for each command
   * In order: 0% transparency Black, 25% transparency, 50% transparency, and 75% transparency
+
+* **1101** - Increases the size of the macaroni's shadow by advancing the "light clock" once for each command 
+  * In order: 0% larger than macaroni, 25% larger, 50% larger, and 75% larger
 
 * **0101** - Shift the shadow from the convex side of the macaroni to the concave
 
@@ -161,7 +158,30 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 
 ## [Examples]
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_TK_
+1. Make an "X"
+
+```
+1000
+0010 1011 1101 1101 0101 0100
+0010 0111 1011 1101 1101 0100
+0010 1001 1011 1101 1101 0101 0100
+0010 0111 1001 1011 1101 1101 0100
+```
+
+2. Make a repeating pattern
+
+```
+1000
+0011 0011 0011 0011 0011
+0010 0100
+0010 0111 1100 1100 1100 1100 0100
+0010 1001 0100
+0010 0111 1001 1100 1100 1100 1100 0100
+0110
+1010 1010 1010 1010 1010 1010 1010 1010
+```
+
+
 
 &rarr; Go back to [Index](#index)
 
