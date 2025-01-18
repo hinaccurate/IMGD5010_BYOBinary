@@ -131,7 +131,7 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 
 * **0111** - Macro rotate macaroni (clockwise 90 degrees)
 
-* **0001** - Micro rotate macaroni (clockwise 24 degrees)
+* **0001** - Micro rotate macaroni (clockwise 10 degrees)
 
 ### Art
 
