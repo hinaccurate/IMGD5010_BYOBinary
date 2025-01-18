@@ -2,7 +2,8 @@
 _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
 ###### last updated: January 17, 2025
 
-## [Index]
+<a name="index"></a>
+## Index
 
 * [About](#about)
   * What is macaroni art?
@@ -47,7 +48,7 @@ maCart drawings are composed of one or more macaronus units, allowing for very s
 
 * The macaronus starts empty (blank).
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
+![Kraft-brown diamond with lightly outlined 4-cell grid that looks like four diamonds all connected](/assets/images/1000_macaronus.png)
 
 * The basic pasta shape is "macaroni", and the first macaroni placed in the macaronus always starts in the top cell, rotated to make a "C". 
 
