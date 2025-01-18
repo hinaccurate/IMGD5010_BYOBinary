@@ -2,7 +2,8 @@
 _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
 ###### last updated: January 17, 2025
 
-[Index]
+## [Index]
+
 * [About](#about)
   * What is macaroni art?
 
