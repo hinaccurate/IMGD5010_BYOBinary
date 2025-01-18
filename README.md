@@ -1,6 +1,6 @@
 # maCart
 _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
-###### last updated: January 17, 2025
+###### last updated: January 18, 2025
 
 <a name="index"></a>
 ## Index
