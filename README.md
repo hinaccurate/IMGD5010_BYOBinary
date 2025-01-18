@@ -26,14 +26,14 @@ _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
   * Other related macaroni art 
 
 # [About]
-#### What is macaroni art?
+### What is macaroni art?
 
 _TK_
 
 &rarr; Go back to [Index](#index)
 
 ## [maCart Basics]
-#### A single macaronus
+### A single macaronus
 
 For our purposes, a single piece of digital macaroni art drawn with this program is called a "maCart drawing", and the basic unit of a maCart drawing is a "macaronus": a 4-cell, diamond-shaped grid, where each cell can either have a piece of pasta added or skipped and left empty. Each piece of pasta, as it's placed, can be flipped, rotated, have smaller or larger shadows of varying levels of transparency and either along the convex or concave side.
 
@@ -43,7 +43,7 @@ _TK_
 
 maCart drawings are composed of one or more macaronus units, allowing for very small and simple digital pieces mimicking children's compositions or for infinite-canvas mosaics.
 
-#### Starting positions
+### Starting positions
 
 * The macaronus starts empty (blank).
 
@@ -69,7 +69,7 @@ Example: _TK_
 
 Example: _TK_
 
-#### Always clockwise...
+### Always clockwise...
 
 When composing a maCart drawing, the macaronus starts in the center of the digital canvas--and just as a macaronus is composed clockwise starting from the upper-left, so too are maCart drawings composed of new macaronus units added in a clockwise spiral around the central macaronus. Every new macaroni, and every new macaronus, starts on the upper left of the "clock".
 
@@ -89,7 +89,7 @@ AC(1), BD(1), CA(2), DB(2), AC(3), BD(3), CA(4), DB(4), AC(5), BD(5)...
 
 Example: _TK_
 
-#### ...Using design clocks
+### ...Using design clocks
 
 Imagining clocks (and clockwise movement) helps minimize the number of commands needed to implement a lot of different options without having to waste additional commands to individually label specific settings.
 
@@ -112,7 +112,7 @@ Example: _TK_
 &rarr; Go back to [Index](#index)
 
 # [Command List]
-#### Macaronus
+### Macaronus
 
 0000 - Makes a new macaronus on the canvas
 
@@ -120,7 +120,7 @@ Example: _TK_
 
 0100 - Move to next cell in macaronus
 
-#### Arrange
+### Arrange
 
 1001 - Flip macaroni on its vertical axis
 
@@ -128,7 +128,7 @@ Example: _TK_
 
 0001 - Micro rotate macaroni (clockwise 24 degrees)
 
-#### Art
+### Art
 
 0011 - Changes the color of the macaronus's construction paper by advancing the "color clock" once for each command (Kraft Red Yellow Blue Black White)
 
@@ -138,7 +138,7 @@ Example: _TK_
 
 0101 - Shift the shadow from the convex side of the macaroni to the concave
 
-#### Advanced Art
+### Advanced Art
 
 1100 - Changes glue color by advancing the "glue clock" once for each command (White Red Yellow Blue Purple at 15% transparency, White at 100% transparency)
 
@@ -157,11 +157,11 @@ _TK_
 &rarr; Go back to [Index](#index)
 
 ## [Inspiration]
-#### Real-life macaroni art
+### Real-life macaroni art
 
 _TK_
 
-#### Other related macaroni art 
+### Other related macaroni art 
 
 _TK_
 
