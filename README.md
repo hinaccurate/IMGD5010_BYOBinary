@@ -2,7 +2,7 @@
 _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
 ###### last updated: January 17, 2025
 
-[Index]
+[Index](#index)
 * [About](#about)
   * What is macaroni art?
 
@@ -29,7 +29,7 @@ _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
 
 _TK_
 
-&rarr; Go back to [Index](#index)
+&rarr; Go back to [Index]
 
 ## [maCart Basics]
 #### A single macaronus
