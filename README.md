@@ -26,14 +26,16 @@ _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
   * Real-life macaroni art
   * Other related macaroni art 
 
-# [About]
+<a name="about"></a>
+# About
 ### What is macaroni art?
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_TK_
 
 &rarr; Go back to [Index](#index)
 
-## [maCart Basics]
+<a name="maCart-basics"></a>
+## maCart Basics
 ### A single macaronus
 
 For our purposes, a single piece of digital macaroni art drawn with this program is called a "maCart drawing", and the basic unit of a maCart drawing is a "macaronus": a 4-cell, diamond-shaped grid, where each cell can either have a piece of pasta added or skipped and left empty. Each piece of pasta, as it's placed, can be flipped, rotated, have smaller or larger shadows of varying levels of transparency and either along the convex or concave side.
@@ -46,15 +48,13 @@ maCart drawings are composed of one or more macaronus units, allowing for very s
 
 ### Starting positions
 
-* The macaronus starts empty (blank).
+* The macaronus starts empty (the faint lines in the below examples are just to demonstrate the cells in the diamond).
 
-![1000_macaronus](https://github.com/user-attachments/assets/eba38cc1-4365-4b5d-acb8-00844298533a)
+![maCart-1](https://github.com/user-attachments/assets/75886e30-590b-4918-8e90-60e50d3dcaa9)
 
+* The basic pasta shape is "macaroni", and the first macaroni placed in the macaronus always starts in the top cell, rotated to make a "C".
 
-
-* The basic pasta shape is "macaroni", and the first macaroni placed in the macaronus always starts in the top cell, rotated to make a "C". 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
+![maCart-6](https://github.com/user-attachments/assets/f7159b44-773a-468f-bba9-8d74848d2b39)
 
 * Subsequent macaroni are placed clockwise until the macaronus is filled, but macaroni can continue to be layered over one another until the command to add a new macaronus to the maCart drawing is given.
 
@@ -72,23 +72,34 @@ maCart drawings are composed of one or more macaronus units, allowing for very s
 
 ### Always clockwise...
 
-When composing a maCart drawing, the macaronus starts in the center of the digital canvas--and just as a macaronus is composed clockwise starting from the upper-left, so too are maCart drawings composed of new macaronus units added in a clockwise spiral around the central macaronus. Every new macaroni, and every new macaronus, starts on the upper left of the "clock".
+When composing a maCart drawing, the macaronus starts in the center of the digital canvas--and just as a macaronus is composed clockwise starting from the upper-left, so too are maCart drawings composed of new macaronus units added in a clockwise spiral around the central macaronus. Every new macaroni, and every new macaronus, starts as near to the top of the "clock" as possible.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
+![maCart-1](https://github.com/user-attachments/assets/7165ac4f-43e9-4891-ab23-a9e2bd10c307) ![maCart-6](https://github.com/user-attachments/assets/6df7702b-7193-4062-947c-675adda09a1a) ![maCart-5](https://github.com/user-attachments/assets/ced4d81a-da4c-4c69-aa64-d959a72f9ca7)
 
-Each new macaroni can be rotated be rotated clockwise as well, on either a macro or micro level.
+Each new macaroni can be rotated clockwise as well, on either a macro or micro level.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
 
 While the macaroni can be layered, the macaronus units spiral out as they get added on. If you imagine each side of the macaronus labeled with letters (again, starting clockwise from the upper-left), a macaronus would look like this:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
+![maCart-7](https://github.com/user-attachments/assets/5bb89338-03f6-45fa-befc-fa67095733a4)
 
 Each new macaronus is added so that one side is aligned to specific side of the previous, starting from the upper-left and circling clockwise. The pattern is:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_AC(1), BD(1), CA(2), DB(2), AC(3), BD(3), CA(4), DB(4), AC(5), BD(5)..._
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example: _TK_
+So in practice, every time a new macaronus is created, the pattern develops in a spiral from the center and the overall maCart drawing zooms out to stay on the canvas.
+
+![maCart-7](https://github.com/user-attachments/assets/8d2f5860-adad-4650-bc61-992a0553fd6a)
+![maCart-8](https://github.com/user-attachments/assets/6d14e4a5-f1eb-4466-a3d2-dd67bb93d303)
+![maCart-9](https://github.com/user-attachments/assets/e87ac5da-132f-4e37-ab8e-e254bed17f70)
+![maCart-10](https://github.com/user-attachments/assets/912e0e9f-30c5-4ea0-83b4-8312c9acaaf0)
+![maCart-11](https://github.com/user-attachments/assets/68d27ac5-57a6-4b59-afe4-1525d372d65b)
+![maCart-12](https://github.com/user-attachments/assets/2d0430ec-a0d0-4651-a678-19d653881a12)
+![maCart-13](https://github.com/user-attachments/assets/e809758b-7549-432f-96b8-8ca440823d1d)
+![maCart-14](https://github.com/user-attachments/assets/10136351-dcb7-47c1-bc45-e8f0b7e22b75)
+![maCart-15](https://github.com/user-attachments/assets/529fae0b-c259-482b-b164-beb88b2a566b)
+![maCart-16](https://github.com/user-attachments/assets/bb805539-2504-4f51-851d-58137b7b5eb6)
 
 ### ...Using design clocks
 
@@ -112,7 +123,8 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 
 &rarr; Go back to [Index](#index)
 
-# [Command List]
+<a name="command-list"></a>
+# Command List
 ### Macaronus
 
 * **1000** - Makes a new macaronus on the canvas
@@ -159,9 +171,10 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 
 &rarr; Go back to [Index](#index)
 
-## [Examples]
+<a name="examples"></a>
+## Examples
 
-1. Make an "X"
+1. Make a pinwheel
 
 ```
 1000
@@ -170,6 +183,8 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 0010 1001 1011 1101 1101 0101 0100
 0010 0111 1001 1011 1101 1101 0100
 ```
+![maCart-4](https://github.com/user-attachments/assets/458cba6f-5b59-4ad9-93b4-ae9849255eff)
+
 
 2. Make a repeating pattern
 
@@ -183,12 +198,17 @@ Imagining clocks (and clockwise movement) helps minimize the number of commands 
 0110
 1010 1010 1010 1010 1010 1010 1010 1010
 ```
+![maCart-2](https://github.com/user-attachments/assets/27e17528-e51e-4e17-a1ca-a5dc2459da6a)
 
 
+3. Make a dinosaur
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_TK_
 
 &rarr; Go back to [Index](#index)
 
-## [Inspiration]
+<a name="inspiration"></a>
+## Inspiration
 ### Real-life macaroni art
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_TK_
