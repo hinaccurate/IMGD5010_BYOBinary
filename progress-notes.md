@@ -2,7 +2,9 @@
 _An assignment to create a speculative binary language that can be executed with pen and paper, as well as documentation and record of feedback._
 ###### created: January 16, 2025
 
-###### last updated: January 17, 2025
+<hr>
+
+###### last updated: January 18, 2025
 
 * Updated README with more documentation and some example art
 
