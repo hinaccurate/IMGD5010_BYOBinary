@@ -5,6 +5,17 @@ _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
 <a name="index"></a>
 ## Index
 
+* [Quick Start](#quick-start)
+  * First step
+  * List of commands
+    
+* Commands In-Depth
+  * Macaronus
+  * Arrange
+  * Draw
+ 
+* Sample Programs
+
 * [About](#about)
   * What is macaroni art?
 
