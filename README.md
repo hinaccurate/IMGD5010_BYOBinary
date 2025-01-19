@@ -1,41 +1,66 @@
+![maCart_banner](https://github.com/user-attachments/assets/28c50459-1ec9-4e81-ab51-a97e54746c49)
+
 # maCart
 _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
-###### last updated: January 18, 2025
+###### last updated: January 19, 2025
 
 <a name="index"></a>
 ## Index
 
 * [Quick Start](#quick-start)
   * First step
-  * List of commands
+  * List of codes
     
-* Commands In-Depth
+* [Commands In-Depth](#commands-in-depth)
   * Macaronus
   * Arrange
   * Draw
  
-* Sample Programs
+* [Sample Programs](#sample-programs)
 
-* [About](#about)
-  * What is macaroni art?
+<hr>
 
-* [maCart Basics](#macart-basics)
-  * A single macaronus
-  * Starting positions
-  * Always clockwise...
-  * ...Using design clocks
+<a name="quick-start"></a>
+# Quick Start
+### First step
 
-* [Command List](#command-list)
-  * Macaronus
-  * Arrange
-  * Art
-  * Advanced Art
+1. Get your art materials together:
 
-* [Examples](#examples)
+  * A box of macaroni, glue, paper, and crayons or similar.
+OR
+  * Just the paper and something to draw and color with.
 
-* [Inspiration](#inspiration)
-  * Real-life macaroni art
-  * Other related macaroni art 
+2. Use maCart codes to place or draw macaroni on your paper
+
+  * To help keep track of your work, imagine--or draw--a grid made up of 4 smaller squares (cells), and put it in the top left of your paper. We can call this working grid a 'macaronus'.
+  * Starting at the top left of the macaronus, work in that cell until you're ready to move clockwise to the next one.
+  * When you've filled your macaronus, you can either finish your maCart drawing or add a new macaronus (with the `0000` code) to the right of the previous one.
+  * If you reach the end of your paper but aren't done yet, go back to the left side of your paper and add your next macaronus directly under the previous row.
+
+### List of codes
+
+| Code  | What happens |
+| --- | --- |
+| **Macaronus** | |
+| `0000`  | Make a new macaronus on your paper  |
+| `0001`  | Add a macaroni--turned like a "C"--to the current cell  |
+| `0010`  | Move to the next cell in the macaronus  |
+| `0011`  | Clear previous macaronus and restart it  |
+| **Arrange** | |
+| `0100`  | Flip macaroni on its vertical axis  |
+| `0101`  | Rotate macaroni (clockwise 90 degrees) |
+| `0110`  | Push macaroni to the cell's side (starting clockwise from top) |
+| `1001`  | Push macaroni to touch two sides 
+| **Draw** | |
+| `1100`  | Draw line between two macaroni ends |
+| `1010`  | Draw line between two macaroni middles |
+| `1000`  | Change color of  |
+| `1110`  | 
+
+
+&rarr; Go back to [Index](#index)
+
+<hr>
 
 <a name="about"></a>
 # About
