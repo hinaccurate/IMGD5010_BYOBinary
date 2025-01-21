@@ -1,3 +1,12 @@
+| [`1100`](#1100)  | Fill in interior space in macaronus created by three or more macaroni touching |
+| [`1101`](#1101)  | Fill in exterior space in macaronus created by three or more macaroni touching |
+| [`1110`](#1110)  | Fill in interior space in macaronus created by a drawn line connecting to macaroni |
+| [`1111`](#1111)  | Fill in exterior space in macaronus created by a drawn line connecting to macaroni |
+
+<hr>
+<hr>
+<hr>
+
 * [About](#about)
   * What is macaroni art?
 
