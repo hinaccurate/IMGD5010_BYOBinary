@@ -8,8 +8,9 @@ _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
 ## Index
 
 * [Quick Start](#quick-start)
-  * First step
+  * First steps
   * List of codes
+  * Design clocks
     
 * [Commands in Depth](#commands-in-depth)
   * Macaronus
@@ -17,7 +18,10 @@ _Code yourself some **ma**caroni **art** with **C**-shaped pasta._
   * Draw
   * Color
  
-* [Sample Programs](#sample-programs)
+* [Sample Program](#sample-program)
+  * Code
+  * Output with outlined macaronus units
+  * Output without outline
 
 <hr>
 
@@ -41,22 +45,93 @@ To learn more about each code, click on the link for examples.
 | --- | --- |
 | **Macaronus** | |
 | [`0000`](#0000)  | Make a new macaronus on your paper  |
-| [`0001`](#0001)  | Add a macaroni--turned like a "C"--to the current cell  |
+| [`0001`](#0001)  | Add a macaroni to the current cell  |
 | [`0010`](#0010)  | Move to the next cell in the macaronus  |
-| [`0011`](#0011)  | Clear previous macaronus and restart it  |
 | **Arrange** | |
-| [`0100`](#0100)  | Flip macaroni |
-| [`0101`](#0101)  | Rotate macaroni |
-| [`0110`](#0110)  | Push macaroni against a side of the cell |
-| [`0111`](#0111)  | Push macaroni touch two sides of the cell |
+| [`0011`](#0011)  | Flip macaroni |
+| [`0100`](#0100)  | Rotate macaroni |
+| [`0101`](#0101)  | Push macaroni against a side of the cell |
+| [`0110`](#0110)  | Touch macaroni to two sides of the cell |
 | **Draw** | |
-| [`1000`](#1000)  | Change crayon color |
-| [`1001`](#1001)  | Draw line between the center of the cell to the top |
+| [`0111`](#0111)  | Change crayon color |
+| [`1000`](#1000)  | Draw line between the center of the cell to a side |
+| [`1001`](#1001)  | Draw a dot in the center of the cell |
 | **Color** | |
-| [`1010`](#1010)  | Draw a dot in the center of the cell |
-| [`1011`](#1011)  | Fill in a quarter of the cell |
+| [`1010`](#1010)  | Fill in a quarter of the cell |
+| **Advanced** | |
+| [`1011`](#1011)  | Clear previous macaronus and restart it |
+| [`1100`](#1100)  | Copy previous macaronus |
+| [`1110`](#1110)  | Paste copied macaronus |
 
-&rarr; Go back to [Index](#index)
+<a name="design-clocks"></a>
+### Design clocks
+
+Some codes can be used multiple times to change a condition of the macaroni or the macaronus. Imagining clocks (and clockwise movement) helps minimize the number of commands needed to implement a lot of different options without having to waste additional commands to individually label specific settings.  
+
+<a name="rotation-clock"></a>
+* **Rotation clock**
+  - Use with `0100` _after_ the `0001` "add a macaroni" command.
+  - Can be used interchangeably with the **Arrange** commands (`0011`, `0100`, `0101`, and `0110`) to create the effect required.
+  - Each instance advances the rotation 90 degrees until it returns to 0.
+  - From a macaroni's starting position (the C-shape), there are a maximum of 3 instances before the clock restarts at the top.
+  - This means that, practically, you could code `0100` ten times in a row and still end up with a macaroni rotated just 180 degrees.
+    
+![maCart-32](https://github.com/user-attachments/assets/2649e230-8285-4ad4-999a-a315fb686208)
+
+<a name="push-clock"></a>
+* **Push clock**
+  - Use with `0101` to _after_ the `0001` "add a macaroni" command.
+  - Can be used interchangeably with the **Arrange** commands (`0011`, `0100`, `0101`, and `0110`) to create the effect required.
+  - Each instance advances clockwise the side of the cell the macaroni pushes up against, starting with the "top".
+  - From a macaroni's starting position (a centered C-shape), there are a maximum of 4 instances before the clock restarts at the top. It does _not_ return to center.
+  - This means that, practically, you could code `0101` ten times in a row and still end up with a macaroni pushed to the bottom side of the cell.
+    
+![maCart-33](https://github.com/user-attachments/assets/c61ea105-3acc-41bf-8e2d-44d054dfde08)
+
+<a name="touch-clock"></a>
+* **Touch clock**
+  - Use with `0110` _after_ the `0001` "add a macaroni" command.
+  - Can be used interchangeably with the **Arrange** commands (`0011`, `0100`, `0101`, and `0110`) to create the effect required.
+  - Each instance of `0110` advances which two sides of the cell the macaroni touches clockwise, starting with "top-right". 
+  - From a macaroni's starting position (the C-shape), there are a maximum of 4 instances before the clock restarts at the top. It does _not_ return to center.
+  - This means that, practically, you could use `0110` ten times in a row and still end up with a macaroni touching "right-bottom".
+    
+![maCart-34](https://github.com/user-attachments/assets/a371152a-3f1a-4284-8a49-0647f9de5e70)
+
+<a name="color-clock"></a>
+* **Color clock**
+  - Use with `0111` _before_ the **Draw** and **Color** commands (`1000`, `1001`, and `1010`).
+  - Each instance advances the color clockwise from clear (no crayon), to Red, Yellow, Blue, Purple, Green and Black.
+  - From a macaronus cell's starting color (clear), there are a maximum of 6 instances before the clock restarts at the top. It does _not_ return to clear.
+  - This means that, practically, you could code `0111` ten times in a row and still end up with a Purple crayon.
+    
+![maCart-35](https://github.com/user-attachments/assets/ee6f4a8c-4b52-4e9f-81c0-1f5dcbee87d1)
+
+<a name="line-clock"></a>
+* **Line clock**
+  - Use with `1000` _after_ the crayon-color code `0111`.
+  - Each instance advances the line's endpoint clockwise, starting with the "noon" position (top-center). _Any_ instance of `1000` creates a line (though whether it's visible depends on the color crayon you're using).
+  - From the starting position, there are a maximum of 8 instances before the clock restarts at the top--but each use requires that you rechoose your crayon.
+  - This means that, practically:
+    - If you don't call `0111` first and choose your color, you could use `1000` ten times in a row and still end up with no lines.
+    - If you call `0111` once and then `1000` three times, you'd have a red line in the "noon" position (center to top-center) but no other visible lines.
+    - If you call `0111 1010` four times in a row, you would have four red lines pointing from the center to the "noon", "1 o'clock", "2 o'clock" and "3 o'clock" positions.
+      
+![maCart-36](https://github.com/user-attachments/assets/25ab41d3-169a-40ac-a3d3-5d9489733d63)
+
+<a name="quarter-coloring-clock"></a>
+* **Quarter coloring clock**
+  - Use with `1010` _after_ the crayon-color code `0111`.
+  - Each instance advances the quarter being colored in clockwise, starting with "top-right". 
+  - From the starting quarter, there are a maximum of 4 instances before the clock restarts at the top--but each use requires that you rechoose your crayon.
+  - This means that, practically:
+    - If you don't call `0111` first and choose your color, you could use `1010` ten times in a row and still end up with a clear cell.
+    - If you call `0111` once and then `1010` three times, you'd have a red top-right quarter and then clear bottom-right and bottom-left quarters.
+    - If you call `0111 1010` four times in a row, the entire cell would be red.
+      
+![maCart-37](https://github.com/user-attachments/assets/1a48204a-923b-4540-8dd4-fd7b3a6380a0)
+
+&rarr; _Go back to [Index](#index)_
 
 <hr>
 
@@ -90,7 +165,7 @@ To learn more about each code, click on the link for examples.
 ![maCart-5](https://github.com/user-attachments/assets/ef67f389-5783-4aca-912b-b07f4e017ab3)
 
 <a name="0001"></a>
-### `0001`: Add a macaroni--turned like a "C"--to the current cell
+### `0001`: Add a macaroni to the current cell
 
 * The basic maCart shape is the "macaroni", and the first macaroni placed in the macaronus always starts in the top-left cell, rotated to make a "C" (like "ma**C**art").
 
@@ -127,19 +202,15 @@ To learn more about each code, click on the link for examples.
 
 ![maCart-23](https://github.com/user-attachments/assets/53f86f2c-ecca-4d8e-aa9f-ffe5ef914797)
 
-<a name="0011"></a>
-### `0011`: Clear previous macaronus and restart it 
+&rarr; _Go back to [List of Codes](#list-of-codes)_\
+&rarr; _Go back to [Index](#index)_
 
-* This is just a way to erase and rework your maCart drawing--treat it like a backspace, moving your working area back one macaronus.
-
-&rarr; Go back to [List of Codes](#list-of-codes)\
-&rarr; Go back to [Index](#index)
-
+***
 
 ## Arrange
 
-<a name="0100"></a>
-### `0100`: Flip macaroni
+<a name="0011"></a>
+### `0011`: Flip macaroni
 
 * This code flips the macaroni on its vertical axis. This means that if your macaroni is still in its starting position, the flip will keep it still C-shaped, just reversed:
 
@@ -153,24 +224,24 @@ To learn more about each code, click on the link for examples.
 
 ...and so on.
 
-<a name="0101"></a>
-### `0101`: Rotate macaroni
+<a name="0100"></a>
+### `0100`: Rotate macaroni
 
 * The macaroni always starts upright in a C-shape.
 
 ![maCart-6](https://github.com/user-attachments/assets/78721a74-0849-42db-ba7d-8541251f249a)
 
-* To rotate it, add `0101`-- this turns the macaroni 90 degrees.
+* To rotate it, add `0100`-- this turns the macaroni 90 degrees.
 
 ![maCart-25](https://github.com/user-attachments/assets/5aeaf336-d718-43e9-be9b-7912da91c5df)
 
-* To rotate the macaroni more, add an instance of the code to move the macaroni another turn clockwise. The below would be `0101 0101 0101`:
+* To rotate the macaroni more, use the [Rotation clock](#rotation-clock) to track how many instances of the code you need to move the macaroni another turn clockwise. The below would be `0100 0100 0100`:
 
 ![maCart-27](https://github.com/user-attachments/assets/ae08c7bf-416e-4288-9201-9b8af7ab79f4)
 
 
-<a name="0110"></a>
-### `0110`: Push macaroni against a side of the cell
+<a name="0101"></a>
+### `0101`: Push macaroni against a side of the cell
 
 * The macaroni always starts upright in a C-shape, but after the flipping and/or rotating it, you can also choose to push it up against a side of the cell to help connect macaroni later.
 
@@ -178,63 +249,185 @@ To learn more about each code, click on the link for examples.
 
 ![maCart-28](https://github.com/user-attachments/assets/e3ce04d0-148f-4441-9628-65db7955e14d)
 
-* But to push the macaroni against a different side, add another instance of the code to push the macaroni to the next side, in clockwise order. The below would be `0110 0110`:
+* But to push the macaroni against a different side, use the [Push clock](#push-clock) to track how many instances of the code you need to push the macaroni to the next side, in clockwise order. The below would be `0101 0101`:
   
 ![maCart-29](https://github.com/user-attachments/assets/58366749-a60f-4eff-b7c6-7b60951a3cde)
 
-<a name="0111"></a>
-### `0111`: Push macaroni touch two sides of the cell
+<a name="0110"></a>
+### `0110`: Touch macaroni to two sides of the cell
 
 * The macaroni always starts upright in a C-shape, but after the flipping and/or rotating it, you can also choose to angle it by pushing it against two sides of the cell.
 
-* To push the macaroni against the top and right side of the cell, add `0111`:
+* To make the macaroni touch the top and right side of the cell, add `0110`:
 
 ![maCart-31](https://github.com/user-attachments/assets/0edd1e3f-cd60-4e66-b32f-b513ce730465)
 
-* But to angle the macaroni differently, add another instance of the code to angle the macaroni clockwise to the next two sides. The below would be `0111 0111`:
+* But to angle the macaroni differently, use the [Touch clock](#touch-clock) to track how many instances of the code you need to angle the macaroni clockwise to the next two sides. The below would be `0110 0110`:
 
 ![maCart-30](https://github.com/user-attachments/assets/90aa73c6-075c-4947-8bb0-f7b7e20cc275)
 
+&rarr; _Go back to [List of Codes](#list-of-codes)_\
+&rarr; _Go back to [Index](#index)_
 
-&rarr; Go back to [List of Codes](#list-of-codes)\
-&rarr; Go back to [Index](#index)
-
+***
 
 ## Draw
 
-<a name="1000"></a>
-### `1000`: Change crayon color 
+<a name="0111"></a>
+### `0111`: Change crayon color 
 
-* starts clear, but add another instance of the code to advance the color) : Red, Yellow, Blue, Purple, Green, and then return to clear)
+* The color always starts clear (i.e., no crayon).
+
+* To change (use) a color, add `0111` before one of your **Draw** or **Color** codes. Note! You'll need to use the crayon code _each time_ you want to draw or color! (See the [Design clocks](#design-clocks) for examples.)
+  
+* Use the [Color clock](#color-clock) to track how many instances of the code you need to get the color you want. The color starts clear (no crayon), and advances to Red, Yellow, Blue, Purple, and Green before returning to clear.
+
+<a name="1000"></a>
+### `1000`: Draw line between the center of the cell to a side 
+
+* The line always starts from the center of the cell with an endpoint of "noon" (top-center), and the color always starts clear.
+
+* Use the [Line clock](#line-clock) to track how many instances of the code you need to draw the line where you want it. Use the [Color clock](#color-clock) to track which color you want your line to be.
+  
+* To change the color, use the `0111` crayon-color code before each use of `1000`. Note! You'll need to use the crayon code _each time_ you want to draw or color! (See the [Design clocks](#design-clocks) for examples.)
+  
+* Depending on the order of your coding, you can either draw a line under (common), around (common), or on top of (uncommon) the macaroni. The same goes for dots (`1001`) and filled in quarters (`1010`).
+
+![maCart-38](https://github.com/user-attachments/assets/e64a9566-0efa-496b-aa27-10e9f652f6e2)
 
 <a name="1001"></a>
-### `1001`: Draw line between the center of the cell to the top 
+### `1001`: Draw a dot in the center of the cell 
 
-* (add another instance of the code to move the line clockwise)
+* The color of the dot always starts clear. 
 
+* To change the color, use the `0111` crayon-color code before each use of `1001`. Note! You'll need to use the crayon code _each time_ you want to draw or color! (See the [Design clocks](#design-clocks) for examples.) 
 
-&rarr; Go back to [List of Codes](#list-of-codes)\
-&rarr; Go back to [Index](#index)
+* Depending on the order of your coding, you can either add a dot in a blank cell (common), in a space unoccupied by macaroni (common), or on top of the macaroni (uncommon). The same goes for lines (`1000`) and filled in quarters (`1010`).
 
+![maCart-39](https://github.com/user-attachments/assets/57fe3699-e876-4698-a4aa-81f2eb0a2bab)
+
+&rarr; _Go back to [List of Codes](#list-of-codes)_\
+&rarr; _Go back to [Index](#index)_
+
+***
 
 ## Color
 
 <a name="1010"></a>
-### `1010`: Draw a dot in the center of the cell 
+### `1010`: Fill in a quarter of the cell 
 
-around any other features
+* The working quarter of the cell always starts with the top-right, and the color always starts clear.
+  
+* Use the [Quarter coloring clock](#quarter-coloring-clock) to track how many instances of the code you need to color which quarter you want. Use the [Color clock](#color-clock) to track which color you want your quarter to be.
+  
+* To change the color, use the `0111` crayon-color code before each use of `1010`. Note! You'll need to use the crayon code _each time_ you want to draw or color! (See the [Design clocks](#design-clocks) for examples.)
+  
+* Depending on the order of your coding, you can either color under (common), around (common), or on top of (uncommon) the macaroni. The same goes for dots (`1001`) and lines (`1000`).
+
+![maCart-40](https://github.com/user-attachments/assets/1bcaed48-6fe1-424d-acd6-d4e10ef11607)
+
+&rarr; _Go back to [List of Codes](#list-of-codes)_\
+&rarr; _Go back to [Index](#index)_
+
+***
+
+## Advanced
 
 <a name="1011"></a>
-### `1011`: Fill in a quarter of the cell 
+### `1011`: Clear previous macaronus and restart it 
 
-around any other features 
+* This is just a way to erase and rework your maCart drawing--treat it like a backspace, moving your working area back one macaronus.
 
-(add another instance of the code to move clockwise to the next quarter) 
+<a name="1100"></a>
+### `1100`: Copy previous macaronus 
 
-&rarr; Go back to [List of Codes](#list-of-codes)\
-&rarr; Go back to [Index](#index)
+* It can be onerous to fill an entire page (or to code one). If you have an empty macaronus, you can just use `0000` to progress to the next working space, but if you have a pattern you want to repeat across multiple macaronus units, use `1100`.
+
+* You can also edit a copied macaronus as you would a `0000`, which allows for small variations in a more complex pattern.
+
+* Note! This code overwrites any previously copied macaronus.
+
+<a name="1110"></a>
+### `1110`: Paste copied macaronus 
+
+* Provided there's a copied macaronus already, `1110` can be used in place of `0000`.
+
+* Pasted macaronus units can be edited using the **Arrange**, **Draw**, and **Color** codes. Just be aware that your starting point in each cell may be different (based on the [Design Clock](#design-clocks) options).
+
+&rarr; _Go back to [List of Codes](#list-of-codes)_\
+&rarr; _Go back to [Index](#index)_
 
 <hr>
 
-<a name="sample-programs"></a>
-# Sample Programs
+<a name="sample-program"></a>
+# Sample Program
+
+## Code
+`0000`\
+`0000`
+
+`0000`\
+`0010 0010 0010 0001`\
+`0100`\
+`0101 0101 0101`
+
+`0000`\
+`0000`\
+`0000`
+
+`0000`\
+`0010 0001`\
+`0101 0101`
+
+`0000`\
+`0111 0111 0111 0111 1010`\
+`0111 0111 0111 0111 1010 1010`\
+`0111 0111 0111 0111 1010 1010 1010`\
+`0111 0111 0111 0111 1010 1010 1010 1010`\
+`0111 0111 0111 1001`\
+`0010 0001 0100 0100 0101 0101 0101 0101`\
+`0010 0001 0011 0110 0110 0110`\
+`0010 0001 0100 0100 0100 0101`
+
+`0000`\
+`0000`
+
+`0000`\
+`0010`\
+`0010 0111 0111 0111 0111 0111 1000 1000 1000 1000`
+
+`0000`\
+`0010 0010`\
+`0010 0001 0101 0101`\
+`0010 0111 0111 0111 0111 0111 1000 1000 1000 1000`
+
+`0000`\
+`0001 0100 0101 0101 0101`\
+`0010 0001 0110 0110 0110 0110`\
+`0010 0111 0111 0111 0111 0111 1000 1000 1000 1000 1000 1000`\
+`0010 0111 0111 0111 0111 0111 1000 1000 1000 1000 1000 1000`
+
+`0000`\
+`0000`
+
+`0000`\
+`0010 0111 0111 0111 0111 0111 1010`
+
+`0000`\
+`0111 0111 0111 0111 0111 1010`\
+`0111 0111 0111 0111 0111 1010 1010 1010 1010`\
+`0010 0111 0111 0111 0111 0111 1010`\
+`0111 0111 0111 0111 0111 1010 1010 1010 1010`
+
+`1100`\
+`1110`\
+`0000`\
+`0000`
+
+## Output with outlined macaronus units
+
+![maCart-41](https://github.com/user-attachments/assets/bcbe57fb-5001-4c4d-b3d2-628795cf5599)
+
+## Output without the outline
+
+![maCart-42](https://github.com/user-attachments/assets/517f09e2-0081-45eb-86ec-5b2a21504ade)
